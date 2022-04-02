@@ -1,0 +1,28 @@
+.book-list {
+    &-content {
+        width: 70%;
+        height: 100%;
+        margin: 0 auto;
+    }
+    &-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &-left {
+        display: flex;
+        align-items: center;
+    }
+    &-name {
+        color: #2B0F42;
+        font-size: 30px;
+        font-weight: 600;
+    }
+    &-logo {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        margin-right: 15px;
+        box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.15);
+    }
+}

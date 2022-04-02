@@ -1,0 +1,28 @@
+.system {
+    &-left {
+        position: fixed;
+        left: 0;
+        top: 0;
+        max-width: 270px;
+        height: 100vh;
+        background-color: #283046;
+        width: 18%;
+    }
+    &-right {
+        margin-left: 270px;
+        padding: 15px 15px;
+        background-color: #161d31;
+        position: relative;
+    }
+}
+
+.container {
+    max-width: 1920px !important;
+    padding: unset !important;
+}
+.left-sidebar {
+    width: 20%;
+}
+.main-view {
+    width: 100%;
+}
