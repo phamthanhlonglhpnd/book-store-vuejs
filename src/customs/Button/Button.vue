@@ -9,6 +9,7 @@
         @click="onClick"
     >
         <div class="button-text">{{ text }}</div>
+        <slot></slot>
     </button>
 </template>
 

@@ -154,7 +154,16 @@ export const userMenu = [
         name: 'My Account',
         menus: [
             {
-                name: 'My Account', link: '/system/user/my-account', icon: 'fas fa-user-circle'
+                name: 'My File', link: '/system/user/my-account', icon: 'fas fa-file'
+            },
+            {
+                name: 'My Payment', link: '/system/user/my-payment', icon: 'fas fa-credit-card'
+            },
+            {
+                name: 'My Address', link: '/system/user/my-address', icon: 'fas fa-map-marker-alt'
+            },
+            {
+                name: 'Change Password', link: '/system/user/change-password', icon: 'fas fa-key'
             }
         ]
     },

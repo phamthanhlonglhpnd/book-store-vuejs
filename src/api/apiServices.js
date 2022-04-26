@@ -45,6 +45,28 @@ const getUserByIDAPI = (id) => {
     return axiosConfig.get(`/api/get-user-by-id?id=${id}`);
 }
 
+const addBookToCartAPI = (data) => {
+    return axiosConfig.post("/api/add-to-cart", data)
+}
+
+const getBooksInCartAPI = (id) => {
+    return axiosConfig.get(`/api/get-books-in-cart?id=${id}`);
+}
+
+const deleteBookInCartAPI = (bookID, userID) => {
+    return axiosConfig.delete("/api/delete-book-in-cart", {
+        data: {
+            bookID,
+            userID,
+        }
+    })
+}
+
+const orderAPI = (data) => {
+    return axiosConfig.post("/api/create-order", data);
+}
+
+
 // Type Of Handbook
 const getAllTypeAPI = (page, limit) => {
     return axiosConfig.get(`/api/get-all-type-of-handbook?page=${page}&limit=${limit}`);
@@ -212,6 +234,46 @@ const getBookByTypeAPI = (type) => {
     return axiosConfig.get(`/api/get-book-by-filter?type=${type}`)
 }
 
+// Address
+const createAddressAPI = (data) => {
+    return axiosConfig.post("/api/create-address", data);
+}
+
+const deleteAddressAPI = (id) => {
+    return axiosConfig.delete("/api/delete-address", {
+        data: {
+            id,
+
+        }
+    })
+}
+
+const getAllAddressAPI = (id) => {
+    return axiosConfig.get(`/api/get-all-address?id=${id}`)
+}
+
+// Order
+const getAllNonConfirmedOrdersAPI = () => {
+    return axiosConfig.get('/api/get-all-non-confirmed-orders')
+}
+
+const getAllConfirmedOrdersAPI = () => {
+    return axiosConfig.get('/api/get-all-confirmed-orders')
+}
+
+const confirmOrderAPI = (data) => {
+    return axiosConfig.put("/api/confirm-order", data)
+}
+
+// Search
+const searchAuthorsAPI = (keyword) => {
+    return axiosConfig.get(`/api/search-authors?keyword=${keyword}`);
+}
+
+const searchBooksAPI = (keyword) => {
+    return axiosConfig.get(`/api/search-books?keyword=${keyword}`);
+}
+
 export {
     loginAPI, registerAPI, logoutAPI, getAllUsersAPI, forgotPasswordAPI,
     createUserAPI, deleteUserAPI, updateUserAPI, changePasswordAPI,
@@ -222,5 +284,7 @@ export {
     createPublisherAPI, updatePublisherAPI, getAllPublishersAPI, deletePublisherAPI, getPublisherByIDAPI,
     createLanguageAPI, updateLanguageAPI, deleteLanguageAPI, getAllLanguagesAPI,
     createBookAPI, deleteBookAPI, getAllBooksAPI, getBookByIDAPI, getBookByTypeAPI,
-
+    addBookToCartAPI, getBooksInCartAPI, deleteBookInCartAPI, createAddressAPI,
+    deleteAddressAPI, getAllAddressAPI, orderAPI, getAllNonConfirmedOrdersAPI, 
+    getAllConfirmedOrdersAPI, confirmOrderAPI, searchAuthorsAPI, searchBooksAPI, 
 }

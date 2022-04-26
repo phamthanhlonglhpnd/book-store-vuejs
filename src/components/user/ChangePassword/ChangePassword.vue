@@ -1,12 +1,10 @@
 <template>
-    <div class="title">Manage Orders</div>
+    <div>Change</div>
 </template>
 
 <script>
 import ButtonVue from "@/customs/Button/Button.vue"
 import InputVue from "@/customs/Input/Input.vue"
-
-
 export default {
     components: {
         ButtonVue,
@@ -17,5 +15,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../styles/base";
 </style>

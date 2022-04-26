@@ -67,7 +67,7 @@ export default {
             page: 0,
             limit: 3,
             isLoading: false,
-            typesLength: JSON.parse(localStorage.getItem('types')).length
+            typesLength: JSON.parse(localStorage.getItem('types'))?.length
         }
     },
     methods: {

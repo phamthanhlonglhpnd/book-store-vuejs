@@ -28,7 +28,7 @@
             >
                 <swiper-slide v-for="book in books" :key="book.id">
                     <router-link :to="`/book/${book.name}/${book.id}`">
-                        <BookItemVue :image="book.image" />
+                        <BookItemVue :image="book.image" :id="book.id" :name="book.name" />
                     </router-link>
                 </swiper-slide>
             </swiper>

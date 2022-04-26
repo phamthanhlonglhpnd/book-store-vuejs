@@ -12,7 +12,7 @@
                         </span>
                         <span v-for="author in book.Book_Authors" :key="author.id">
                             <router-link
-                                :to="`/author/${author.Author.id}`"
+                                :to="`/author/${author.Author.name}/${author.Author.id}`"
                                 class="book-authorName"
                             >{{ author.Author.name }}</router-link>
                         </span>
@@ -28,7 +28,11 @@
                         </div>
                     </div>
                     <div class="book-button">
-                        <ButtonVue text="Add to cart" backgroundColor="#de2454" />
+                        <ButtonVue
+                            text="Add to cart"
+                            backgroundColor="#de2454"
+                            :onClick="addToCart"
+                        />
                         <ButtonVue text="Add to wishlist" backgroundColor="#7D67B8" />
                     </div>
                     <div class="book-detail">
@@ -39,11 +43,11 @@
                         </div>
                         <div class="book-item">
                             <span class="book-item-title">Publisher:</span>
-                            <span>{{ book.publisher.name }}</span>
+                            <span>{{ book.publisher?.name }}</span>
                         </div>
                         <div class="book-item">
                             <span class="book-item-title">Language:</span>
-                            <span>{{ book.language.name }}</span>
+                            <span>{{ book.language?.name }}</span>
                         </div>
                         <div class="book-item">
                             <span class="book-item-title">Page:</span>
@@ -57,7 +61,7 @@
                             <span class="book-item-title">Categories:</span>
                             <span v-for="type in book.Book_Types" :key="type.id">
                                 <router-link
-                                    :to="`/type/${type.Type_Of_Handbook.id}`"
+                                    :to="`/type/${type.Type_Of_Handbook.name}/${type.Type_Of_Handbook.id}`"
                                     class="book-authorName"
                                 >{{ type.Type_Of_Handbook.name }}</router-link>
                             </span>
@@ -87,7 +91,7 @@
 import HeaderVue from "../Header/Header.vue";
 import FooterVue from "../Footer/Footer.vue";
 import ButtonVue from "@/customs/Button/Button.vue";
-import { getBookByIDAPI } from "@/api/apiServices";
+import { getBookByIDAPI, addBookToCartAPI } from "@/api/apiServices";
 import { convertToImage } from "@/utils/globalFunction";
 
 export default {
@@ -119,6 +123,19 @@ export default {
     computed: {
         getImage() {
             return convertToImage(this.book?.image);
+        }
+    },
+    methods: {
+        async addToCart() {
+            try {
+                let userID = JSON.parse(localStorage.getItem('userInfor')).id;
+                let bookID = this.$route.params.id;
+
+                let response = await addBookToCartAPI({ bookID, userID });
+                alert(response.errMessage);
+            } catch (e) {
+                alert(e);
+            }
         }
     }
 }

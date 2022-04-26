@@ -1,0 +1,53 @@
+.account {
+    padding: 0 100px 50px 100px;
+    &-top {
+        border-bottom: 1px solid wheat;
+        margin-bottom: 30px;
+        padding-bottom: 30px;
+    }
+    &-title {
+        color: white;
+        font-size: 16px;
+    }
+    &-bottom {
+        display: flex;
+        &-left {
+            width: 40%;
+            border-right: 1px solid wheat;
+        }
+        &-right {
+            flex: 1;
+            label {
+                display: block;
+                cursor: pointer;
+            }
+            &-content {
+                width: 70%;
+                height: 100%;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                justify-items: center;
+            }
+        }
+    }
+    &-name {
+        color: white;
+    }
+    &-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        gap: 0 20px;
+    }
+    &-avartar {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        border: 1px solid wheat;
+        margin: 20px auto;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}

@@ -72,7 +72,6 @@ export default {
                 passwordError: '',
             },
             isShowPassword: true,
-            // isValidate: this.info.email !== '' && this.info.password !== '' && this.error.emailError === '' && this.error.passwordError === '',
             store,
         }
     },

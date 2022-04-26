@@ -1,6 +1,6 @@
 <template>
     <HeaderVue />
-    <BackgroundVue />
+    <!-- <BackgroundVue /> -->
     <div class="type">
         <div class="type-content">
             <div class="type-name">{{ $route.params.name }}</div>

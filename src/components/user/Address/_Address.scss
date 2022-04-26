@@ -1,0 +1,45 @@
+.address {
+    &-top {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 0 ;
+        border-bottom: 1px solid wheat;
+    }
+    &-title {
+        color: white;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    &-bottom {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 0 20px;
+        margin-top: 40px;
+    }
+
+    &-input {
+        width: 100%;
+        padding: 8px;
+        border-radius: 5px;
+    }
+    &-item {
+        border-bottom: 1px solid wheat;
+        color: white;
+        padding: 20px 50px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        div {
+            padding: 10px 0;
+        }
+    }
+    &-box {
+        input {
+            margin: 0 5px;
+        }
+        label {
+            color: white;
+            margin-right: 10px;
+        }
+    }
+}

@@ -12,12 +12,7 @@
                 <div class="header-choose">Choose a Bookstore</div>
 
                 <div v-if="isLoggin" :style="{ position: 'relative' }">
-                    <img
-                        :src="account"
-                        alt="account"
-                        class="header-user"
-                        @click="isShowAccount = !isShowAccount"
-                    />
+                    <img :src="account" alt="account" class="header-user" @click="isShowAccount = !isShowAccount" />
                     <div v-if="isShowAccount" class="header-user-info">
                         <router-link to="/system/start" class="header-user-item">My Account</router-link>
                         <div class="header-user-item">My Wishlists</div>
@@ -29,12 +24,12 @@
                 <div v-else class="header-choose">
                     <router-link to="/login">Sign in</router-link>
                 </div>
-                <div :style="{ position: 'relative' }">
+                <router-link to="/user/my-cart" :style="{ position: 'relative' }">
                     <img :src="cart" alt="cart" class="header-cart" />
                     <div class="header-box">
                         <span class="header-count">{{ count }}</span>
                     </div>
-                </div>
+                </router-link>
             </div>
         </div>
         <div class="header-bottom">
@@ -75,7 +70,7 @@ export default {
     methods: {
         async handleLogout() {
             await store.logout();
-        }
+        },
     }
 }
 

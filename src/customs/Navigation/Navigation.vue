@@ -11,7 +11,7 @@
                         :class="menuItem.isActive ? 'menu-item menu-active' : 'menu-item'"
                         @click="showActive(menuItem)"
                     >
-                        <i :className="menuItem.menus[0].icon"></i>
+                        <i :class="menuItem.menus[0].icon"></i>
                         <div class="menu-name">{{ menuItem.name }}</div>
 
                         <i
@@ -27,7 +27,10 @@
                                 class="menu-box-item"
                                 :to="item.link"
                                 v-if="menuItem.isActive && menuItem.isShowDropdown"
-                            >{{ item.name }}</router-link>
+                            >
+                                <i :style="{ marginRight: '15px' }" :class="item.icon"></i>
+                                <span>{{ item.name }}</span>
+                            </router-link>
                             <div v-else></div>
                         </template>
                     </div>

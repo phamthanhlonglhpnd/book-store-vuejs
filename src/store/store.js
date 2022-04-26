@@ -11,8 +11,8 @@ export const store = reactive({
             if(response.errCode === 0) {
                 this.isLoggin = true;
                 localStorage.setItem('isLoggin', JSON.stringify(this.isLoggin));
-                const { id, email, name, roleID } = response.userData;
-                this.userInfor = { id, email, name, roleID };
+                const { id, email, name, phone, roleID, Zipcodes } = response.userData;
+                this.userInfor = { id, email, name, phone, roleID, Zipcodes };
                 localStorage.setItem('userInfor', JSON.stringify(this.userInfor));
             } else {
                 this.isLoggin = false;
@@ -33,7 +33,6 @@ export const store = reactive({
                 this.userInfor = {};
                 localStorage.removeItem('isLoggin');
                 localStorage.removeItem('userInfor');
-                localStorage.removeItem('authors');
                 location.reload();
             }
             return response;

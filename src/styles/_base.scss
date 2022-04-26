@@ -11,7 +11,7 @@ body {
     font-size: 16px;
     max-width: 1920px;
     margin: 0 auto;
-    line-height: 1;
+    line-height: 1.5;
     overflow-x: hidden;
 }
 
@@ -22,6 +22,11 @@ body {
     width: 100%;
 }
 
+.content {
+    width: 70%;
+    height: 100%;
+    margin: 0 auto;
+}
 
 input,
 button,
