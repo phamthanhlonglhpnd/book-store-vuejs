@@ -1,4 +1,4 @@
-# covid-19-tracker
+# book-store
 
 ## Project setup
 ```

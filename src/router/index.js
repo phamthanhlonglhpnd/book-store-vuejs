@@ -5,12 +5,17 @@ const routes = [
   {
     path: '/',
     name: 'homepage',
-    component: () => import ('../components/home/HomePage.vue')
+    component: () => import ('../components/home/HomePage.vue'),
+    beforeEach: (to, from) => {
+      // ...
+      console.log(1);
+      return false
+    }
   },
   {
     path: '/book/:name/:id',
     name: 'book',
-    component: () => import ('../components/home/BookDetail/BookDetail.vue')
+    component: () => import ('../components/home/BookDetail/BookDetail.vue'),
   },
   {
     path: '/search/keyword=:keyword',
@@ -31,32 +36,43 @@ const routes = [
     path: '/login',
     name: 'login',
     component: () => import ('../components/auth/Login.vue'),
+    beforeEach: (to, from) => {
+      // ...
+      console.log(1);
+      return false
+    },
+    meta: { requiresAuth: false }
   },
   {
     path: '/register',
     name: 'register',
-    component: () => import ('../components/auth/Register.vue')
+    component: () => import ('../components/auth/Register.vue'),
+    meta: { requiresAuth: false }
   },
   {
     path: '/forgot-password',
     name: 'forgot-password',
-    component: () => import ('../components/auth/ForgotPassword.vue')
+    component: () => import ('../components/auth/ForgotPassword.vue'),
+    meta: { requiresAuth: false }
   },
   {
     path: '/change-password',
     name: 'change-password',
-    component: () => import ('../components/auth/ChangePassword.vue')
+    component: () => import ('../components/auth/ChangePassword.vue'),
+    meta: { requiresAuth: true }
   },
   {
     path: '/user/my-cart',
     name: 'user-cart',
     component: () => import ('../components/user/Cart/Cart.vue'),
+    meta: { requiresAuth: true }
   },
   {
     path: '/user/checkout',
     name: 'user-checkout',
     props: true,
     component: () => import ('../components/user/Checkout/Checkout.vue'),
+    meta: { requiresAuth: true }
   },
   {
     path: '/system',
@@ -76,11 +92,13 @@ const routes = [
         path: 'admin/manage-books',
         name: 'manage-books',
         component: () => import ('../components/admin/ManageBooks.vue'),
+        meta: { isAdmin: true }
       },
       {
         path: 'admin/manage-users',
         name: 'manage-users',
         component: () => import ('../components/admin/ManageUsers.vue'),
+        meta: { isAdmin: true }
       },
       {
         path: 'admin/manage-comments',
@@ -190,6 +208,21 @@ const router = createRouter({
     return savedPosition || new Promise((resolve)=>{
       setTimeout(()=> resolve({ top:0 }), 300)
     })
+  }
+})
+
+router.beforeEach(async (to, from) => {
+  const isLoggin = JSON.parse(localStorage.getItem('isLoggin'))
+  console.log(to);
+  if (to.meta.requiresAuth && !isLoggin) {
+    // this route requires auth, check if logged in
+    // if not, redirect to login page.
+    
+    return {
+      path: '/login',
+      // save the location we were at to come back later
+      query: { redirect: to.fullPath },
+    }
   }
 })
 
